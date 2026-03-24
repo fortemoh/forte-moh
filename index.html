@@ -98,17 +98,25 @@
         }
 
         main {
-            max-width: 900px;
+            max-width: 1180px;
             margin: 0 auto;
             padding: 32px 24px 64px;
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 24px;
+            align-items: start;
+        }
+
+        .main-content {
+            min-width: 0;
         }
 
         .changelog-section {
             background: #161b22;
             border: 1px solid #30363d;
             border-radius: 8px;
-            padding: 28px;
-            margin-bottom: 24px;
+            padding: 18px 20px;
+            margin-bottom: 14px;
         }
 
         .changelog-section h2 {
@@ -359,6 +367,147 @@
             border-top: 1px solid #21262d;
         }
 
+        /* Compact cvar definition */
+        .cvar-def {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 7px 12px;
+            margin: 8px 0 10px;
+            flex-wrap: wrap;
+        }
+
+        .cvar-def .cvar-name {
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            color: #7ee787;
+            font-weight: 600;
+            font-size: 0.88rem;
+            background: none;
+            padding: 0;
+        }
+
+        .cvar-def .cvar-eq {
+            color: #8b949e;
+            font-size: 0.85rem;
+        }
+
+        .cvar-def .cvar-default {
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            color: #f0883e;
+            font-size: 0.88rem;
+            background: none;
+            padding: 0;
+        }
+
+        .cvar-def .cvar-pipe {
+            color: #30363d;
+            font-size: 0.85rem;
+        }
+
+        .cvar-def .cvar-inline-desc {
+            color: #8b949e;
+            font-size: 0.82rem;
+        }
+
+        /* Update log sidebar */
+        .update-log {
+            position: sticky;
+            top: 90px;
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .update-log-header {
+            background: #21262d;
+            padding: 10px 14px;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .update-log-header h3 {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #8b949e;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+        }
+
+        .update-entries {
+            max-height: calc(100vh - 160px);
+            overflow-y: auto;
+        }
+
+        .update-entry {
+            padding: 10px 14px;
+            border-bottom: 1px solid #21262d;
+        }
+
+        .update-entry:last-child {
+            border-bottom: none;
+        }
+
+        .update-date {
+            display: block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: #58a6ff;
+            margin-bottom: 3px;
+            font-family: 'SFMono-Regular', Consolas, monospace;
+            letter-spacing: 0.3px;
+        }
+
+        .update-entry p {
+            font-size: 0.82rem;
+            color: #8b949e;
+            line-height: 1.45;
+        }
+
+        .update-entry p code,
+        .update-entry li code {
+            font-size: 0.78rem;
+        }
+
+        .update-entry ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .update-entry ul li {
+            font-size: 0.82rem;
+            color: #8b949e;
+            line-height: 1.45;
+            padding: 2px 0 2px 12px;
+            position: relative;
+        }
+
+        .update-entry ul li::before {
+            content: '–';
+            position: absolute;
+            left: 0;
+            color: #484f58;
+        }
+
+        .behavior-list {
+            margin-top: 10px;
+        }
+
+        @media (max-width: 960px) {
+            main {
+                grid-template-columns: 1fr;
+            }
+            .update-log {
+                position: static;
+            }
+            .update-entries {
+                max-height: 260px;
+            }
+        }
+
         @media (max-width: 768px) {
             .header-inner {
                 flex-direction: column;
@@ -366,16 +515,7 @@
             }
 
             .changelog-section {
-                padding: 20px 16px;
-            }
-
-            .cvar-table {
-                font-size: 0.85rem;
-            }
-
-            .cvar-table th,
-            .cvar-table td {
-                padding: 8px 12px;
+                padding: 14px 14px;
             }
         }
     </style>
@@ -406,11 +546,11 @@
     <div class="downloads-bar">
         <div class="downloads-bar-inner">
             <span class="downloads-label" data-i18n="dl_label">Download</span>
-            <a href="../forte-moh/out-linux-amd64-server.zip" class="dl-btn dl-btn-server" data-i18n="dl_server">
+            <a href="../../out-linux-amd64-server.zip" class="dl-btn dl-btn-server" data-i18n="dl_server">
                 <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M2.75 14A1.75 1.75 0 0 1 1 12.25v-2.5a.75.75 0 0 1 1.5 0v2.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25v-2.5a.75.75 0 0 1 1.5 0v2.5A1.75 1.75 0 0 1 13.25 14Z"/><path d="M7.25 7.689V2a.75.75 0 0 1 1.5 0v5.689l1.97-1.97a.749.749 0 1 1 1.06 1.06l-3.25 3.25a.749.749 0 0 1-1.06 0L4.22 6.779a.749.749 0 1 1 1.06-1.06z"/></svg>
                 Linux Server (amd64)
             </a>
-            <a href="../forte-moh/out-windows-x64-client.zip" class="dl-btn dl-btn-client" data-i18n="dl_client">
+            <a href="../../out-windows-x64-client.zip" class="dl-btn dl-btn-client" data-i18n="dl_client">
                 <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M2.75 14A1.75 1.75 0 0 1 1 12.25v-2.5a.75.75 0 0 1 1.5 0v2.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25v-2.5a.75.75 0 0 1 1.5 0v2.5A1.75 1.75 0 0 1 13.25 14Z"/><path d="M7.25 7.689V2a.75.75 0 0 1 1.5 0v5.689l1.97-1.97a.749.749 0 1 1 1.06 1.06l-3.25 3.25a.749.749 0 0 1-1.06 0L4.22 6.779a.749.749 0 1 1 1.06-1.06z"/></svg>
                 Windows Client (x64)
             </a>
@@ -422,6 +562,7 @@
     </div>
 
     <main>
+        <div class="main-content">
         <!-- Section 1: Pak/Pure Validation -->
         <section class="changelog-section" id="pak-pure">
             <h2><span class="tag tag-server">Server</span> &nbsp;<span data-i18n="s1_title">Pak/Pure Validation System</span></h2>
@@ -437,27 +578,16 @@
             <h2><span class="tag tag-server">Server</span> &nbsp;<span data-i18n="s2_title">sv_autokick</span></h2>
             <p data-i18n="s2_desc">Automatically kick clients that fail pure pak validation after a configurable grace period.</p>
 
-            <div class="cvar-table-wrapper">
-                <table class="cvar-table">
-                    <thead>
-                        <tr>
-                            <th data-i18n="cvar_name">Cvar</th>
-                            <th data-i18n="cvar_default">Default</th>
-                            <th data-i18n="cvar_desc">Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="cvar-name">sv_autokick</td>
-                            <td class="cvar-default">0</td>
-                            <td data-i18n="s2_cvar_desc">Seconds to wait before kicking unpure clients. 0 = disabled.</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="cvar-def">
+                <code class="cvar-name">sv_autokick</code>
+                <span class="cvar-eq">=</span>
+                <code class="cvar-default">0</code>
+                <span class="cvar-pipe">|</span>
+                <span class="cvar-inline-desc" data-i18n="s2_cvar_desc">Seconds to wait before kicking unpure clients. 0 = disabled.</span>
             </div>
 
             <div class="behavior-list">
-                <h3 data-i18n="behavior_title">Behavior</h3>
+
                 <ul>
                     <li data-i18n-html="s2_beh1">Set to <code>0</code> (default): disabled — unpure clients stay connected but are marked as impure</li>
                     <li data-i18n-html="s2_beh2">Set to a positive integer (e.g. <code>5</code>): clients failing pure validation are kicked after that many seconds</li>
@@ -475,27 +605,16 @@
             <h2><span class="tag tag-game">Game</span> &nbsp;<span data-i18n="s4_title">g_spectatefix</span></h2>
             <p data-i18n="s4_desc">Control the spectator follow-camera behavior with a toggle between modern and original MoHAA modes.</p>
 
-            <div class="cvar-table-wrapper">
-                <table class="cvar-table">
-                    <thead>
-                        <tr>
-                            <th data-i18n="cvar_name">Cvar</th>
-                            <th data-i18n="cvar_default">Default</th>
-                            <th data-i18n="cvar_desc">Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="cvar-name">g_spectatefix</td>
-                            <td class="cvar-default">1</td>
-                            <td data-i18n="s4_cvar_desc">Toggle between fixed (1) and original MoHAA (0) spectator camera.</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="cvar-def">
+                <code class="cvar-name">g_spectatefix</code>
+                <span class="cvar-eq">=</span>
+                <code class="cvar-default">1</code>
+                <span class="cvar-pipe">|</span>
+                <span class="cvar-inline-desc" data-i18n="s4_cvar_desc">Toggle between fixed (1) and original MoHAA (0) spectator camera.</span>
             </div>
 
             <div class="behavior-list">
-                <h3 data-i18n="behavior_title">Behavior</h3>
+
                 <ul>
                     <li data-i18n-html="s4_beh1"><code>g_spectatefix 1</code> (default): Uses the player's eye position for the spectator camera — cleaner, more predictable follow behavior</li>
                     <li data-i18n-html="s4_beh2"><code>g_spectatefix 0</code>: Reverts to the original MoHAA spectator camera — 56 units behind the player, 24 units above, with lean angle interpolation</li>
@@ -508,27 +627,16 @@
             <h2><span class="tag tag-game">Game</span> &nbsp;<span data-i18n="s5_title">g_roundstartdelay</span></h2>
             <p data-i18n="s5_desc">Freeze players in place at the start of each round in round-based game modes, with a countdown printed to chat.</p>
 
-            <div class="cvar-table-wrapper">
-                <table class="cvar-table">
-                    <thead>
-                        <tr>
-                            <th data-i18n="cvar_name">Cvar</th>
-                            <th data-i18n="cvar_default">Default</th>
-                            <th data-i18n="cvar_desc">Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="cvar-name">g_roundstartdelay</td>
-                            <td class="cvar-default">5</td>
-                            <td data-i18n="s5_cvar_desc">Seconds to freeze players at round start. 0 = disabled.</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="cvar-def">
+                <code class="cvar-name">g_roundstartdelay</code>
+                <span class="cvar-eq">=</span>
+                <code class="cvar-default">5</code>
+                <span class="cvar-pipe">|</span>
+                <span class="cvar-inline-desc" data-i18n="s5_cvar_desc">Seconds to freeze players at round start. 0 = disabled.</span>
             </div>
 
             <div class="behavior-list">
-                <h3 data-i18n="behavior_title">Behavior</h3>
+
                 <ul>
                     <li data-i18n="s5_beh1">Only applies to round-based game modes (Round, TOW, Objective, Liberation)</li>
                     <li data-i18n-html="s5_beh2">Set to <code>0</code>: disabled — round starts immediately with no freeze</li>
@@ -544,27 +652,16 @@
             <h2><span class="tag tag-game">Game</span> &nbsp;<span data-i18n="s6_title">g_preventghostwalk</span></h2>
             <p data-i18n="s6_desc">Prevent the "ghost walking" exploit where players switch weapons mid-stride to reset footstep sounds and move more quietly.</p>
 
-            <div class="cvar-table-wrapper">
-                <table class="cvar-table">
-                    <thead>
-                        <tr>
-                            <th data-i18n="cvar_name">Cvar</th>
-                            <th data-i18n="cvar_default">Default</th>
-                            <th data-i18n="cvar_desc">Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="cvar-name">g_preventghostwalk</td>
-                            <td class="cvar-default">0</td>
-                            <td data-i18n="s6_cvar_desc">Preserve leg animation timing across weapon switches to prevent ghost walking. 0 = disabled.</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="cvar-def">
+                <code class="cvar-name">g_preventghostwalk</code>
+                <span class="cvar-eq">=</span>
+                <code class="cvar-default">0</code>
+                <span class="cvar-pipe">|</span>
+                <span class="cvar-inline-desc" data-i18n="s6_cvar_desc">Preserve leg animation timing across weapon switches to prevent ghost walking. 0 = disabled.</span>
             </div>
 
             <div class="behavior-list">
-                <h3 data-i18n="behavior_title">Behavior</h3>
+
                 <ul>
                     <li data-i18n-html="s6_beh1"><code>g_preventghostwalk 0</code> (default): original behavior — weapon switches restart the leg animation from the beginning, allowing ghost walking</li>
                     <li data-i18n-html="s6_beh2"><code>g_preventghostwalk 1</code>: when a player switches weapons while in the same leg state (e.g. walking), the animation clock is preserved — footstep timing continues uninterrupted</li>
@@ -572,6 +669,48 @@
             </div>
         </section>
 
+        </div><!-- /.main-content -->
+
+        <aside class="update-log">
+            <div class="update-log-header">
+                <h3>Last Updates</h3>
+            </div>
+            <div class="update-entries">
+                <!-- ADD NEW ENTRIES AT THE TOP — copy the block below and fill in date + text -->
+                <!--
+                <div class="update-entry">
+                    <time class="update-date">YYYY-MM-DD</time>
+                    <p>Description of the update.</p>
+                </div>
+                -->
+                <div class="update-entry">
+                    <time class="update-date">2026-03-23</time>
+                    <ul>
+                        <li>Treat <code>dmflags -1</code> as all weapons allowed with bottomless clip</li>
+                        <li>Add configurable round-start freeze countdown with in-game broadcast</li>
+                        <li>Remove door-blocking prevention (players can block doors again)</li>
+                        <li>Revert ghost walk prevention (silent movement via weapon switching re-enabled)</li>
+                        <li>Disable <code>g_teamkillkick</code> by default</li>
+                        <li>Disable <code>r_uselod</code> by default</li>
+                        <li>Fix spectator camera: remove lean offset, position at player eyes</li>
+                        <li>Make brightness/gamma renderer cvars cheat-protected</li>
+                        <li>Limit <code>s_volume</code> to [0, 1], disable <code>s_ambientvolume</code> by default</li>
+                        <li>Simplify and clamp FPS HUD display</li>
+                        <li>Lower max FOV clamp from 120 to 101</li>
+                        <li>Fix sound spatialization bugs (wrong left/right positioning)</li>
+                        <li>Force <code>cl_autoRecordDemo 1</code> on startup</li>
+                        <li>Set default <code>cl_maxpackets 125</code> and <code>com_maxfps 250</code></li>
+                        <li>Disable Windows client console window</li>
+                        <li>Hardcode intro sequence to skip on startup</li>
+                        <li>Add F7 as console toggle key</li>
+                    </ul>
+                </div>
+                <div class="update-entry">
+                    <time class="update-date">2024-03-24</time>
+                    <p>Page launched. Initial features: Pak/Pure validation, <code>sv_autokick</code>, <code>g_spectatefix</code>, <code>g_roundstartdelay</code>, <code>g_preventghostwalk</code>.</p>
+                </div>
+            </div>
+        </aside>
     </main>
 
     <footer>
