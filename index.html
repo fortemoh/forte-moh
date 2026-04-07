@@ -166,7 +166,6 @@
       <li><a href="#install">Installation</a></li>
       <li><a href="#new-cvars">New CVARs</a></li>
       <li><a href="#modified-cvars">Modified CVARs</a></li>
-      <li><a href="#cheat-protected">Cheat-Protected CVARs</a></li>
       <li><a href="#changelog">All Changes</a></li>
     </ul>
   </nav>
@@ -291,16 +290,8 @@
       <td>Packets/sec increased; range clamped to [30, 125]</td>
     </tr>
     <tr>
-      <td><code>cl_pitchspeed</code></td><td>140</td><td>70</td>
-      <td>Pitch speed halved; CHEAT flag added</td>
-    </tr>
-    <tr>
       <td><code>cl_autoRecordDemo</code></td><td>0</td><td>1</td>
       <td>Automatic demo recording forced on</td>
-    </tr>
-    <tr>
-      <td><code>ui_console</code></td><td>0</td><td>1</td>
-      <td>Console enabled by default</td>
     </tr>
     <tr>
       <td><code>s_ambientVolume</code></td><td>1.00</td><td>0</td>
@@ -319,167 +310,58 @@
       <td>Min raised to 80, max lowered to ~96.42</td>
     </tr>
     <tr>
-      <td><code>cg_drawsvlag</code></td><td>1 (ARCHIVE)</td><td>0 (ROM)</td>
-      <td>Server lag indicator forced off &amp; read-only</td>
-    </tr>
-    <tr>
-      <td><code>cl_timeNudge</code></td><td>&mdash;</td><td>&mdash;</td>
-      <td>Range clamped to [0, 20]</td>
-    </tr>
-    <tr>
       <td><code>r_gamma</code></td><td>max 1.0</td><td>max 2.0</td>
       <td>Gamma range extended to [0.0, 2.0]</td>
     </tr>
-    <tr>
-      <td><code>r_znear</code></td><td>4</td><td>3</td>
-      <td>Near clip plane moved closer</td>
-    </tr>
-    <tr>
-      <td><code>r_ambientScale</code></td><td>0.6</td><td>0.5</td>
-      <td>Ambient lighting slightly reduced</td>
-    </tr>
   </tbody>
 </table>
-
-<h3>Resolution Presets (r_mode)</h3>
-<table>
-  <thead>
-    <tr><th>Mode</th><th>Old</th><th>New</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>0</td><td>320&times;240</td><td>1280&times;720 (720p)</td></tr>
-    <tr><td>1</td><td>400&times;300</td><td>1920&times;1080 (1080p)</td></tr>
-    <tr><td>10</td><td>2048&times;1536</td><td>2560&times;1440 (1440p)</td></tr>
-    <tr><td>11</td><td>856&times;480</td><td>3840&times;2160 (4K)</td></tr>
-  </tbody>
-</table>
-
-<h3>Fall Damage (SH/BT Protocol)</h3>
-<table>
-  <thead>
-    <tr><th>Event</th><th>Old</th><th>New</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>EV_FALL_FAR</td><td>25</td><td>24</td></tr>
-    <tr><td>EV_FALL_MEDIUM</td><td>15</td><td>14</td></tr>
-    <tr><td>EV_FALL_SHORT</td><td>5</td><td>4</td></tr>
-  </tbody>
-</table>
-</section>
-
-<!-- ============================================================ -->
-<section id="cheat-protected">
-<h2>Newly Cheat-Protected CVARs</h2>
-<p>
-  The following CVARs now require <code>sv_cheats 1</code> to modify. This prevents
-  clients from gaining visual advantages on competitive servers.
-</p>
-
-<h3>Renderer</h3>
-<ul class="change-list">
-  <li><code>r_ext_gamma_control</code></li>
-  <li><code>r_ext_compiled_vertex_array</code></li>
-  <li><code>r_ext_texture_env_add</code></li>
-  <li><code>r_ext_texture_env_combine</code></li>
-  <li><code>r_colorMipLevels</code></li>
-  <li><code>r_colorbits</code></li>
-  <li><code>r_overBrightBits</code></li>
-  <li><code>r_ignorehwgamma</code></li>
-  <li><code>r_vertexLight</code></li>
-  <li><code>r_ignoreFastPath</code></li>
-  <li><code>r_mapOverBrightBits</code></li>
-  <li><code>r_intensity</code></li>
-  <li><code>r_facePlaneCull</code></li>
-  <li><code>r_dlightBacks</code></li>
-  <li><code>r_debuglines_depthmask</code></li>
-  <li><code>r_fastsky</code></li>
-  <li><code>r_flares</code></li>
-  <li><code>r_lightmap</code></li>
-  <li><code>r_fastentlight</code></li>
-  <li><code>r_useglfog</code></li>
-  <li><code>r_lerpmodels</code></li>
-</ul>
-
-<h3>Client / CGame</h3>
-<ul class="change-list">
-  <li><code>cg_nopredict</code></li>
-  <li><code>cg_showmiss</code></li>
-  <li><code>cg_hidetempmodels</code></li>
-  <li><code>cg_smoothClients</code></li>
-  <li><code>cg_smoothClientsTime</code></li>
-  <li><code>cg_shadows</code></li>
-  <li><code>cg_cameraverticaldisplacement</code></li>
-  <li><code>ui_HeadShots</code></li>
-  <li><code>ui_Accuracy</code></li>
-  <li><code>g_subtitle</code></li>
-</ul>
 </section>
 
 <!-- ============================================================ -->
 <section id="changelog">
 <h2>All Changes</h2>
-
-<h3>Anticheat &amp; sv_pure</h3>
 <ul class="change-list">
   <li>New on-screen <strong>Anticheat HUD</strong> (configstring index 255) in bottom-right corner shows real-time sv_pure status: <span style="color:#90d070">green "Clean (X/Y)"</span>, <span style="color:#f08080">red "Unclean (X/Y)"</span>, or <span style="color:#888">grey "Anticheat Off"</span></li>
   <li><code>sv_autokick</code> system: auto-kicks unpure clients after a configurable delay</li>
   <li>Broadcasts names of unclean players to all clients at round start</li>
-  <li>Dozens of renderer and client CVARs locked behind <code>CVAR_CHEAT</code> to prevent visual exploits</li>
-</ul>
-
-<h3>Gameplay</h3>
-<ul class="change-list">
   <li><strong>Round-start freeze:</strong> configurable countdown via <code>g_roundstartdelay</code> with on-screen messages</li>
   <li><strong>Ghost walk prevention:</strong> <code>g_preventghostwalk</code> preserves leg animation across weapon switches</li>
   <li><strong>Head-stand control:</strong> <code>g_headstand</code> disables standing on players' heads (restores 1.x behavior)</li>
-  <li><strong>Fall damage tweaked</strong> (SH/BT protocol): reduced by 1 point at each severity level</li>
   <li><strong>Damage angle fix:</strong> corrected bug where damage yaw was clamped instead of roll, fixing spurious view tilt</li>
   <li><strong>FOV range tightened:</strong> 80&ndash;96.42 (was 65&ndash;120) for competitive fairness</li>
-</ul>
-
-<h3>Spectator</h3>
-<ul class="change-list">
   <li>Spectator fix enabled by default via <code>g_spectatefix</code></li>
   <li>Removed hint text overlay ("Press Use to follow player", etc.) from spectator view</li>
-</ul>
-
-<h3>Networking &amp; Performance</h3>
-<ul class="change-list">
   <li><code>com_maxfps</code> raised from 85 to 250</li>
   <li><code>cl_maxpackets</code> raised from 30 to 125 (range-clamped)</li>
-  <li><code>cl_timeNudge</code> clamped to [0, 20]</li>
-  <li><code>cl_pitchspeed</code> halved from 140 to 70</li>
-</ul>
-
-<h3>Display &amp; Rendering</h3>
-<ul class="change-list">
-  <li>Resolution presets updated: modes 0/1/10/11 now map to 720p/1080p/1440p/4K</li>
-  <li><code>r_gamma</code> maximum extended from 1.0 to 2.0</li>
-  <li><code>r_znear</code> reduced from 4 to 3; <code>r_ambientScale</code> from 0.6 to 0.5</li>
-</ul>
-
-<h3>UI &amp; Client</h3>
-<ul class="change-list">
-  <li>Console enabled by default (<code>ui_console 1</code>)</li>
   <li>Automatic demo recording on by default (<code>cl_autoRecordDemo 1</code>)</li>
   <li>Intro sequence skipped (<code>cl_playintro 0</code> forced)</li>
   <li>Ambient sounds disabled by default (<code>s_ambientVolume 0</code>)</li>
-  <li>Server lag display forced off and read-only (<code>cg_drawsvlag 0</code>, ROM)</li>
   <li>Team kill kick disabled by default (<code>g_teamkillkick 0</code>)</li>
+  <li><code>r_gamma</code> maximum extended from 1.0 to 2.0</li>
+  <li>Resolution presets updated (see table below)</li>
 </ul>
 
-<h3>Launchers</h3>
-<ul class="change-list">
-  <li><strong>macOS:</strong> New native SwiftUI launcher with game launching and settings persistence</li>
-  <li><strong>Windows:</strong> GUI launcher rewrite with bookmark support, icon display, and Discord button</li>
-</ul>
-
-<h3>Build System</h3>
-<ul class="change-list">
-  <li>CI artifact naming switched to role-first format (removed "out-" prefix)</li>
-  <li>New branding icons across platforms</li>
-  <li>Windows builds use static CRT (eliminates MSVCP140.dll dependency)</li>
-</ul>
+<h3>Resolution Presets (r_mode)</h3>
+<table>
+  <thead>
+    <tr><th>Mode</th><th>Resolution</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>0</td><td>1280&times;720 (720p)</td></tr>
+    <tr><td>1</td><td>1920&times;1080 (1080p)</td></tr>
+    <tr><td>2</td><td>512&times;384</td></tr>
+    <tr><td>3</td><td>640&times;480</td></tr>
+    <tr><td>4</td><td>800&times;600</td></tr>
+    <tr><td>5</td><td>960&times;720</td></tr>
+    <tr><td>6</td><td>1024&times;768</td></tr>
+    <tr><td>7</td><td>1152&times;864</td></tr>
+    <tr><td>8</td><td>1280&times;1024</td></tr>
+    <tr><td>9</td><td>1600&times;1200</td></tr>
+    <tr><td>10</td><td>2560&times;1440 (1440p)</td></tr>
+    <tr><td>11</td><td>3840&times;2160 (4K)</td></tr>
+    <tr><td>-2</td><td>Desktop resolution (default)</td></tr>
+  </tbody>
+</table>
 
 </section>
 
