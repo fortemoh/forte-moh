@@ -9,7 +9,7 @@
 
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #0f0f1a;
+    background: #000;
     color: #d4d4dc;
     line-height: 1.6;
     padding: 0 1rem;
@@ -21,18 +21,20 @@
   .container { max-width: 960px; margin: 0 auto; padding: 2rem 0 4rem; }
 
   header {
-    text-align: center;
-    padding: 3rem 0 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1rem 0;
     border-bottom: 2px solid #d4a843;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
-  header h1 { font-size: 2.4rem; color: #d4a843; letter-spacing: 2px; }
-  header p { color: #888; margin-top: .5rem; font-size: .95rem; }
+  header img { height: 72px; width: auto; }
+  header p { color: #888; font-size: .95rem; }
 
   /* Table of contents */
   nav.toc {
-    background: #161627;
-    border: 1px solid #2a2a3d;
+    background: #0d0d14;
+    border: 1px solid #1e1e30;
     border-radius: 8px;
     padding: 1.2rem 1.6rem;
     margin-bottom: 2.5rem;
@@ -47,7 +49,7 @@
   h2 {
     font-size: 1.5rem;
     color: #d4a843;
-    border-bottom: 1px solid #2a2a3d;
+    border-bottom: 1px solid #1e1e30;
     padding-bottom: .4rem;
     margin-bottom: 1.2rem;
   }
@@ -59,8 +61,8 @@
 
   /* CVAR cards */
   .cvar-card {
-    background: #161627;
-    border: 1px solid #2a2a3d;
+    background: #0d0d14;
+    border: 1px solid #1e1e30;
     border-left: 4px solid #d4a843;
     border-radius: 6px;
     padding: 1rem 1.2rem;
@@ -79,8 +81,8 @@
   }
   .cvar-card .cvar-meta span {
     display: inline-block;
-    background: #1e1e34;
-    border: 1px solid #333;
+    background: #141422;
+    border: 1px solid #2a2a3d;
     border-radius: 3px;
     padding: 0 6px;
     margin-right: 6px;
@@ -90,7 +92,7 @@
 
   code {
     font-family: 'Consolas', 'Courier New', monospace;
-    background: #1e1e34;
+    background: #141422;
     padding: 1px 5px;
     border-radius: 3px;
     font-size: .9em;
@@ -107,11 +109,11 @@
   th, td {
     text-align: left;
     padding: .55rem .75rem;
-    border-bottom: 1px solid #2a2a3d;
+    border-bottom: 1px solid #1e1e30;
   }
-  th { color: #d4a843; font-weight: 600; background: #161627; }
+  th { color: #d4a843; font-weight: 600; background: #0d0d14; }
   td code { font-size: .85rem; }
-  tr:hover { background: #1a1a30; }
+  tr:hover { background: #111120; }
 
   /* Change list */
   .change-list { list-style: none; }
@@ -141,6 +143,7 @@
   .badge-new { background: #1e3a5c; color: #6ec6ff; }
 
   @media (max-width: 600px) {
+    header img { height: 48px; }
     header h1 { font-size: 1.6rem; }
     .cvar-card { padding: .8rem; }
     table { font-size: .8rem; }
@@ -152,7 +155,7 @@
 <div class="container">
 
 <header>
-  <h1>ForteAC</h1>
+  <img src="forte-logo.png" alt="ForteAC">
   <p>New CVARs, Modified CVARs &amp; Full Changelog &mdash; since commit <code>d9b37e5</code></p>
 </header>
 
@@ -223,32 +226,6 @@
     behavior. Set to <code>0</code> to revert to original spectator behavior.
   </p>
   <p><strong>Usage:</strong> <code>set g_spectatefix 1</code></p>
-</div>
-
-<div class="cvar-card">
-  <div class="cvar-name">g_spectatefollow_forward</div>
-  <div class="cvar-meta">
-    <span>Default: 0</span>
-  </div>
-  <p>
-    Controls the forward/back offset of the spectator follow camera.
-    Previously hardcoded to <code>-56</code>. Now defaults to <code>0</code> so the camera
-    sits directly behind the followed player. Negative values move the camera further back.
-  </p>
-  <p><strong>Usage:</strong> <code>set g_spectatefollow_forward 0</code></p>
-</div>
-
-<div class="cvar-card">
-  <div class="cvar-name">g_spectatefollow_up</div>
-  <div class="cvar-meta">
-    <span>Default: 0</span>
-  </div>
-  <p>
-    Controls the vertical (up/down) offset of the spectator follow camera.
-    Previously hardcoded to <code>24</code>. Now defaults to <code>0</code> for an
-    eye-level perspective. Positive values raise the camera.
-  </p>
-  <p><strong>Usage:</strong> <code>set g_spectatefollow_up 0</code></p>
 </div>
 
 <div class="cvar-card">
@@ -474,7 +451,6 @@
 
 <h3>Spectator</h3>
 <ul class="change-list">
-  <li>Follow-camera offsets reset to 0 (was -56 forward, 24 up) for direct behind-player view</li>
   <li>Spectator fix enabled by default via <code>g_spectatefix</code></li>
   <li>Removed hint text overlay ("Press Use to follow player", etc.) from spectator view</li>
 </ul>
@@ -519,7 +495,7 @@
 
 </section>
 
-<footer style="text-align:center; color:#555; font-size:.8rem; border-top:1px solid #2a2a3d; padding-top:1rem; margin-top:2rem;">
+<footer style="text-align:center; color:#555; font-size:.8rem; border-top:1px solid #1e1e30; padding-top:1rem; margin-top:2rem;">
   ForteAC Documentation &mdash; Auto-generated changelog since <code>d9b37e5</code>
 </footer>
 
