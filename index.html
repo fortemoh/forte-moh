@@ -20,29 +20,32 @@
 
   .container { max-width: 960px; margin: 0 auto; padding: 2rem 0 4rem; }
 
-  header {
+  .hero {
     display: flex;
     align-items: center;
-    gap: 1.2rem;
+    gap: 2rem;
     padding: 1rem 0;
     border-bottom: 2px solid #d4a843;
     margin-bottom: 1.5rem;
   }
-  header img { height: 72px; width: auto; }
-  header p { color: #888; font-size: .95rem; }
+  .hero img { height: 120px; width: auto; flex-shrink: 0; }
+  .hero nav { flex: 1; }
+  .hero nav ul { list-style: none; columns: 2; column-gap: 1.5rem; }
+  .hero nav li { padding: .15rem 0; font-size: .9rem; }
+  .hero nav li::before { content: "\25B8 "; color: #d4a843; }
 
-  /* Table of contents */
-  nav.toc {
+  /* Install boxes */
+  .install-row { display: flex; gap: 1rem; margin-bottom: 2rem; }
+  .install-box {
+    flex: 1;
     background: #0d0d14;
     border: 1px solid #1e1e30;
-    border-radius: 8px;
-    padding: 1.2rem 1.6rem;
-    margin-bottom: 2.5rem;
+    border-radius: 6px;
+    padding: .8rem 1rem;
   }
-  nav.toc h2 { font-size: 1rem; color: #d4a843; margin-bottom: .6rem; }
-  nav.toc ul { list-style: none; }
-  nav.toc li { padding: .2rem 0; }
-  nav.toc li::before { content: "\25B8 "; color: #d4a843; }
+  .install-box h3 { font-size: .95rem; color: #d4a843; margin: 0 0 .4rem; }
+  .install-box ol { margin: 0; padding-left: 1.2rem; font-size: .85rem; }
+  .install-box li { padding: .15rem 0; }
 
   /* Sections */
   section { margin-bottom: 3rem; }
@@ -143,8 +146,10 @@
   .badge-new { background: #1e3a5c; color: #6ec6ff; }
 
   @media (max-width: 600px) {
-    header img { height: 48px; }
-    header h1 { font-size: 1.6rem; }
+    .hero { flex-direction: column; gap: .8rem; text-align: center; }
+    .hero img { height: 80px; }
+    .hero nav ul { columns: 1; }
+    .install-row { flex-direction: column; }
     .cvar-card { padding: .8rem; }
     table { font-size: .8rem; }
     th, td { padding: .4rem; }
@@ -154,20 +159,42 @@
 <body>
 <div class="container">
 
-<header>
+<div class="hero">
   <img src="forte-logo.png" alt="ForteAC">
-  <p>New CVARs, Modified CVARs &amp; Full Changelog &mdash; since commit <code>d9b37e5</code></p>
-</header>
+  <nav>
+    <ul>
+      <li><a href="#install">Installation</a></li>
+      <li><a href="#new-cvars">New CVARs</a></li>
+      <li><a href="#modified-cvars">Modified CVARs</a></li>
+      <li><a href="#cheat-protected">Cheat-Protected CVARs</a></li>
+      <li><a href="#changelog">All Changes</a></li>
+    </ul>
+  </nav>
+</div>
 
-<nav class="toc">
-  <h2>Contents</h2>
-  <ul>
-    <li><a href="#new-cvars">New CVARs</a></li>
-    <li><a href="#modified-cvars">Modified CVARs (Defaults &amp; Flags)</a></li>
-    <li><a href="#cheat-protected">Newly Cheat-Protected CVARs</a></li>
-    <li><a href="#changelog">All Changes</a></li>
-  </ul>
-</nav>
+<!-- ============================================================ -->
+<section id="install">
+<h2>Installation</h2>
+<div class="install-row">
+  <div class="install-box">
+    <h3>Windows Client</h3>
+    <ol>
+      <li>Download the latest Windows release archive</li>
+      <li>Extract all files into your MoHAA game directory (where <code>MOHAA.exe</code> lives)</li>
+      <li>Run <code>launcher.exe</code> to launch</li>
+    </ol>
+  </div>
+  <div class="install-box">
+    <h3>Linux Server</h3>
+    <ol>
+      <li>Download the latest Linux server archive</li>
+      <li>Extract all files into your MoHAA server directory</li>
+      <li>Make the binary executable: <code>chmod +x forteac_server</code></li>
+      <li>Run: <code>./forteac_server +set dedicated 2 +exec server.cfg</code></li>
+    </ol>
+  </div>
+</div>
+</section>
 
 <!-- ============================================================ -->
 <section id="new-cvars">
