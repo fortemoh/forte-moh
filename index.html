@@ -189,8 +189,8 @@
     <ol>
       <li>Download the latest Linux server archive</li>
       <li>Extract all files into your MoHAA server directory</li>
-      <li>Make the binary executable: <code>chmod +x forteac_server</code></li>
-      <li>Run: <code>./forteac_server +set dedicated 2 +exec server.cfg</code></li>
+      <li>Make the binary executable: <code>chmod +x moh_server</code></li>
+      <li>Run: <code>./moh_server +set dedicated 2 +exec server.cfg</code></li>
     </ol>
   </div>
 </div>
@@ -249,8 +249,8 @@
     <span>Default: 1</span>
   </div>
   <p>
-    Enables the spectator system fix. When active, corrects issues with spectator mode
-    behavior. Set to <code>0</code> to revert to original spectator behavior.
+    Controls spectator mode behavior. <code>0</code> = original game spectator camera,
+    <code>1</code> = Volute spectator fix.
   </p>
   <p><strong>Usage:</strong> <code>set g_spectatefix 1</code></p>
 </div>
@@ -268,45 +268,6 @@
     is kicked when it expires. Set to <code>0</code> to disable auto-kicking.
   </p>
   <p><strong>Usage:</strong> <code>set sv_autokick 30</code> &mdash; kick unpure clients after 30 seconds</p>
-</div>
-
-<div class="cvar-card">
-  <div class="cvar-name">s_show_num_active_sounds</div>
-  <div class="cvar-meta">
-    <span>Default: 0</span>
-    <span class="badge badge-cheat">CHEAT</span>
-  </div>
-  <p>
-    Debug CVAR. When enabled, displays the number of currently active sounds.
-    Requires cheats to be enabled (<code>sv_cheats 1</code>).
-  </p>
-  <p><strong>Usage:</strong> <code>set s_show_num_active_sounds 1</code></p>
-</div>
-
-<div class="cvar-card">
-  <div class="cvar-name">cg_showemitters</div>
-  <div class="cvar-meta">
-    <span>Default: 0</span>
-    <span class="badge badge-cheat">CHEAT</span>
-  </div>
-  <p>
-    Debug CVAR. When enabled, renders the locations of particle emitters in the world.
-    Requires cheats to be enabled.
-  </p>
-  <p><strong>Usage:</strong> <code>set cg_showemitters 1</code></p>
-</div>
-
-<div class="cvar-card">
-  <div class="cvar-name">com_target_game</div>
-  <div class="cvar-meta">
-    <span>Default: (build-time)</span>
-    <span>INIT | PROTECTED</span>
-  </div>
-  <p>
-    Allows a build-time override of the default target game via the
-    <code>DEFAULT_TARGET_GAME</code> compile macro. Cannot be changed at runtime
-    (CVAR_INIT). Protected from VM modification.
-  </p>
 </div>
 
 </section>
